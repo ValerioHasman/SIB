@@ -1,0 +1,39 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200;0,300;0,400;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,600;1,700;1,800;1,900&display=swap');
+
+:root{
+    --bs-font-sans-serif: 'Nunito';
+}
+
+body{
+    margin: 0;
+    padding: 0;
+    background: url('../midias/bg.jpg') fixed no-repeat;
+    background-size: cover;
+    background-position: right ;
+}
+
+.limitelateral {
+    max-width: 540px !important;
+}
+
+.form-control {
+    background-color: rgba(255, 255, 255, 0.8);
+}
+
+.imagem {
+    max-width: 50%;
+}
+
+.esqueceusenha {
+    color: #999900;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.esqueceusenha:hover {
+    color: #747400;
+}
+
+.completar {
+    height: 100vh;
+}
