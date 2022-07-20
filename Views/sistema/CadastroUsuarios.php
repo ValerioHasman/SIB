@@ -50,7 +50,7 @@
           <label for="registros">registros</label>
         </div>
         <div class="col-auto">
-          <label>Buscar</label>
+          <label>Buscar:</label>
           <div class="buscar">
             <div class="input-group input-group-sm mb-3 col-12">
               <input type="text" class="form-control" name="buscar" id="buscar">
@@ -127,6 +127,22 @@
 
       <!-- fim da tabela -->
 
+      <div class="row justify-content-between">
+        <div class="col-auto">
+          Mostrando de 1 até 8 de 8 registros
+        </div>
+        <nav class="col-auto">
+          <ul class="pagination pagination-sm">
+            <li class="page-item disabled">
+              <a class="page-link">Anterior</a>
+            </li>
+            <li class="page-item active"><a class="page-link" href="#">1</a></li>
+            <li class="page-item disabled">
+              <a class="page-link" href="#">Seguinte</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
     </div>
   </div>
 </div>
