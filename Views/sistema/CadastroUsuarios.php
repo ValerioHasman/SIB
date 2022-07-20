@@ -31,6 +31,102 @@
           </div>
         </div>
       </form>
+
+      <!-- fim do form -->
+
+      <div class="row justify-content-between mt-3">
+        <div class="col-auto">
+          <label for="registros">Mostrar</label>
+          <div class="registros">
+            <div class="input-group input-group-sm mb-3 col-12">
+              <select class="form-select" id="registros" name="registros">
+                <option selected></option>
+                <option value="8">8</option>
+                <option value="25">25</option>
+                <option value="50">50</option>
+              </select>
+            </div>
+          </div>
+          <label for="registros">registros</label>
+        </div>
+        <div class="col-auto">
+          <label>Buscar</label>
+          <div class="buscar">
+            <div class="input-group input-group-sm mb-3 col-12">
+              <input type="text" class="form-control" name="buscar" id="buscar">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- fim da busca -->
+
+      <div>
+        <table class="table table-bordered">
+          <thead class="bg-info text-light">
+            <tr>
+              <th hidden scope="col">#</th>
+              <th scope="col">Nome</th>
+              <th scope="col">E-mail</th>
+              <th scope="col">Perfil</th>
+              <th scope="col">Ações</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th hidden scope="row">1</th>
+              <td>Marcos</td>
+              <td>marcos@gmail.com</td>
+              <td>Administrador</td>
+              <td class="py-1">
+                <div class="row justify-content-center">
+                  <button class="btn btn-warning px-0 py-0 col-auto mx-1">
+                    <img class="imagem" src="midias/icon_edit.png" />
+                  </button>
+                  <button class="btn btn-danger px-0 py-0 col-auto mx-1">
+                    <img class="imagem" src="midias/icon_delete.png" />
+                  </button>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <th hidden scope="row">1</th>
+              <td>Marcos</td>
+              <td>marcos@gmail.com</td>
+              <td>Administrador</td>
+              <td class="py-1">
+                <div class="row justify-content-center">
+                  <button class="btn btn-warning px-0 py-0 col-auto mx-1">
+                    <img class="imagem" src="midias/icon_edit.png" />
+                  </button>
+                  <button class="btn btn-danger px-0 py-0 col-auto mx-1">
+                    <img class="imagem" src="midias/icon_delete.png" />
+                  </button>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <th hidden scope="row">1</th>
+              <td>Marcos</td>
+              <td>marcos@gmail.com</td>
+              <td>Administrador</td>
+              <td class="py-1">
+                <div class="row justify-content-center">
+                  <button class="btn btn-warning px-0 py-0 col-auto mx-1">
+                    <img class="imagem" src="midias/icon_edit.png" />
+                  </button>
+                  <button class="btn btn-danger px-0 py-0 col-auto mx-1">
+                    <img class="imagem" src="midias/icon_delete.png" />
+                  </button>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- fim da tabela -->
+
     </div>
   </div>
 </div>

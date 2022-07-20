@@ -41,3 +41,17 @@ body{
 	left: calc(100% - 32px);
 	z-index: 100;
 }
+
+.registros {
+    width: 6rem;
+    display: inline-block;
+}
+
+.buscar {
+    width: 200px;
+    display: inline-block;
+}
+
+.imagem {
+    width: 40px;
+}
