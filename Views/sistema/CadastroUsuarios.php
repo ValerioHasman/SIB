@@ -1,9 +1,9 @@
-<div class="fora"><a href="sistema/sair" class="btn btn-outline-danger btn-sm"><i class="bi bi-x-lg"></i></a></div>
+<div class="fora" title="Fechar"><a href="sistema/sair" class="btn btn-outline-danger btn-sm"><i class="bi bi-x-lg"></i></a></div>
 <div>
   <div class="col-12">
     <div class="card mx-4 my-4 px-3 cartao rounded-5">
       <h2 class="titulo form-control my-3 py-3 rounded-4">Cadastro de Usuários</h2>
-      <form class="row cinza py-3 mx-0">
+      <form method="POST" class="row cinza py-3 mx-0">
         <div class="col-4">
           <label for="nome">Nome</label>
           <input type="text" class="form-control" id="nome" name="nome" />
