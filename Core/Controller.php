@@ -2,6 +2,8 @@
 
 namespace Core;
 
+use Models\Usuario;
+
 abstract class Controller
 {
 
@@ -25,17 +27,25 @@ abstract class Controller
 
     protected function sessaoLigada(): void
     {
-        if( !empty($_SESSION['usu_id']) ){
+        if( !empty($_SESSION['USU_ID']) ){
             header('Location: ' . $GLOBALS["base"] . 'sistema/index');
             exit;
         }
     }
     protected function sessaoDesligada(): void
     {
-        if( empty($_SESSION['usu_id']) ){
+        if( empty($_SESSION['USU_ID']) ){
             header('Location: ' . $GLOBALS["base"] . 'home/index');
             exit;
         }
+    }
+
+    protected function logar(array $post)
+    {
+        $usuario = new Usuario();
+        $usuario->login = $post['login'];
+        $usuario->senha = $post['senha'];
+        $usuario->logar();
     }
     
 }

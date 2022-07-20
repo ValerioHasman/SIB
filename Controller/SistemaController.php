@@ -14,7 +14,7 @@ class SistemaController extends Controller
     
     public function CadastroUsuarioss(): void
     {
-        // $this->sessaoDesligada();
+        $this->sessaoDesligada();
 
         $this->carregarTemplateDoSistema('sistema/CadastroUsuarios', array());
     }

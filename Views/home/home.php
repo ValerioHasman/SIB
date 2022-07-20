@@ -7,7 +7,7 @@
         </div>
         <div class="mt-5 mb-3">
           <label for="login" >Login</label>
-          <input type="email" name="login" class="form-control" id="login" />
+          <input type="text" name="login" class="form-control" id="login" />
         </div>
         <div class="mb-3">
           <label for="senha" >Senha</label>
@@ -19,6 +19,14 @@
         <div class="mt-4 text-center">
           <a class="esqueceusenha" href="#">ESQUECEU SUA SENHA? CLIQUE AQUI.</a>
         </div>
+        <?php
+
+        if(isset($GLOBALS["ERRO_CADASTRO"]) & !empty($GLOBALS["ERRO_CADASTRO"])){
+          echo $GLOBALS["ERRO_CADASTRO"];
+          $GLOBALS["ERRO_CADASTRO"] = '';
+        }
+          
+        ?>
       </form>
     </div>
   </div>
