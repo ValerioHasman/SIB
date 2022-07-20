@@ -12,28 +12,25 @@ body{
     background-position: right ;
 }
 
-.limite {
-    max-width: 540px !important;
-}
-
-.form-control {
-    background-color: rgba(255, 255, 255, 0.8);
-}
-
-.imagem {
-    max-width: 50%;
-}
-
-.esqueceusenha {
-    color: #999900;
-    text-decoration: none;
+.titulo {
+    background-color: #1474B6;
+    color: whitesmoke;
     font-weight: bold;
 }
 
-.esqueceusenha:hover {
-    color: #747400;
+.cartao {
+    height: calc(100vh - 3rem);
 }
 
-.completar {
-    height: 100vh;
+
+.rounded-4 {
+    border-radius: 0.7rem !important;
+}
+
+.rounded-5 {
+    border-radius: 1rem !important;
+}
+
+.cinza {
+    background-color: var(--bs-gray-100);
 }
