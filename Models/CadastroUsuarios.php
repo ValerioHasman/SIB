@@ -8,7 +8,6 @@ class CadastroUsuarios
 {
 
   private ?int $id;
-  private int $id_login;
   private string $nome;
   private string $email;
   private string $senha;
@@ -20,6 +19,9 @@ class CadastroUsuarios
 
   public function __set($atributo, $value): void
   {
+    if ($atributo == 'id') {
+      $this->$atributo = (int) filter_var(trim($value), FILTER_SANITIZE_SPECIAL_CHARS);
+    }
     if ($atributo == 'nome') {
       $this->$atributo = filter_var(trim($value), FILTER_SANITIZE_SPECIAL_CHARS);
     }
@@ -61,6 +63,33 @@ class CadastroUsuarios
     $sql->bindValue(":email", $this->email);
     $sql->bindValue(":senha", $this->senha);
     $sql->bindValue(":perfil", $this->perfil);
+    $sql->bindValue(":usuario", $_SESSION["USU_ID"]);
+    $sql->execute();
+  }
+
+  public function atualizaNoBanco(): void
+  {
+
+    $sql = Conexao::getConexao()->prepare("UPDATE `USUARIOS_CADASTRADOS` SET
+      `CAD_NOME` = :nome,
+      `CAD_EMAIL` = :email,
+      `CAD_SENHA` = :senha,
+      `PER_ID` = :perfil
+      WHERE `USUARIOS_CADASTRADOS`.`CAD_ID` = :id AND `USUARIOS_CADASTRADOS`.`USU_ID` = :usuario");
+    $sql->bindValue(":id", $this->id);
+    $sql->bindValue(":nome", $this->nome);
+    $sql->bindValue(":email", $this->email);
+    $sql->bindValue(":senha", $this->senha);
+    $sql->bindValue(":perfil", $this->perfil);
+    $sql->bindValue(":usuario", $_SESSION["USU_ID"]);
+    $sql->execute();
+  }
+
+  public function apagaNoBanco(): void
+  {
+
+    $sql = Conexao::getConexao()->prepare("DELETE FROM `USUARIOS_CADASTRADOS` WHERE `USUARIOS_CADASTRADOS`.`CAD_ID` = :id AND `USUARIOS_CADASTRADOS`.`USU_ID` = :usuario");
+    $sql->bindValue(":id", $this->id);
     $sql->bindValue(":usuario", $_SESSION["USU_ID"]);
     $sql->execute();
   }

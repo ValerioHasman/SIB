@@ -18,7 +18,20 @@ class SistemaController extends Controller
     {
         $this->sessaoDesligada();
 
-        $this->cadastrar($_POST);
+        switch (isset($_POST['tipo']) ? $_POST['tipo'] : '' ){
+            case 'atualizar':
+                $this->atualizar($_POST);
+                break;
+            case 'cadastrar':
+                $this->cadastrar($_POST);
+                break;
+            case 'apagar':
+                $this->apagar($_POST);
+                break;
+            default:
+                break;
+        }
+        //$this->cadastrar($_POST);
 
         $this->carregarTemplateDoSistema('sistema/cadastroUsuarios',
             array(

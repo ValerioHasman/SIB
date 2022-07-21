@@ -49,7 +49,7 @@ abstract class Controller
         $usuario->logar();
     }
 
-    protected function cadastrar($post)
+    protected function cadastrar($post): void
     {
         if(
             isset($post)
@@ -66,4 +66,36 @@ abstract class Controller
             $cadastrar->inserirNoBanco();    
         }
     }
+    protected function atualizar($post): void
+    {
+        if(
+            isset($post)
+            & !empty($post['id'])
+            & !empty($post['nome'])
+            & !empty($post['email'])
+            & !empty($post['senha'])
+            & !empty($post['perfil'])
+            ){
+            $cadastrar = new CadastroUsuarios();
+            $cadastrar->id = $post['id'];
+            $cadastrar->nome = $post['nome'];
+            $cadastrar->email = $post['email'];
+            $cadastrar->senha = $post['senha'];
+            $cadastrar->perfil = $post['perfil'];
+            $cadastrar->atualizaNoBanco();
+        }
+    }
+
+    protected function apagar($post): void
+    {
+        if(
+            isset($post)
+            & !empty($post['id'])
+            ){
+            $cadastrar = new CadastroUsuarios();
+            $cadastrar->id = $post['id'];
+            $cadastrar->apagaNoBanco();
+        }
+    }
+
 }

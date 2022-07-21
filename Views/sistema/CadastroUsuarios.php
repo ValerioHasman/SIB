@@ -4,7 +4,9 @@
     <div class="card mx-4 my-4 px-3 cartao rounded-5">
       <h2 class="titulo form-control my-3 py-3 rounded-4">Cadastro de Usuários</h2>
       <form method="POST" class="row cinza py-3 mx-0">
-        <input hidden value="cadastrar" name="tipo" id="tipo" />
+        <input hidden name="id" id="id" />
+        <input hidden value="cadastrar" name="tipo" id="atua" />
+        
         <div class="col-4">
           <label for="nome">Nome</label>
           <input required type="text" class="form-control" id="nome" name="nome" />
@@ -25,9 +27,22 @@
           </select>
         </div>
         <div class="col-4">
-          <div class="mt-4 d-grid gap-2">
-            <button type="submit" name="tipos" class="btn btn-primary">Cadastrar</button>
+          <div id="grupo1" class="mt-4 d-grid gap-2">
+            <button type="submit" class="btn btn-primary">Cadastrar</button>
           </div>
+          <div id="grupo2" class="row d-none">
+            <div class="col-6">
+              <div class="mt-4 d-grid gap-2">
+                <button type="submit" class="btn btn-primary">Atualizar</button>
+              </div>
+            </div>
+            <div class="col-6">
+              <div class="mt-4 d-grid gap-2">
+                <button type="button" class="btn btn-secondary" id="cancelar">Cancelar</button>
+              </div>
+            </div>
+          </div>
+
         </div>
       </form>
 
@@ -125,12 +140,23 @@ function cadastros($dadosModel)
     <td>' . $array['PER_NOME'] . '</td>
     <td class="py-1">
       <div class="row justify-content-center">
-        <button class="btn btn-warning px-0 py-0 col-auto mx-1">
+        <button onClick="editar(\'atualiza'.$array['CAD_ID'].$array['PER_ID'].'\')" id="atualiza'.$array['CAD_ID'].$array['PER_ID'].'" class="btn btn-warning px-0 py-0 col-auto mx-1">
+          <div style="display: none;">
+          <div>'.$array['CAD_ID'].'</div>
+          <div>'.$array['CAD_NOME'].'</div>
+          <div>'.$array['CAD_EMAIL'].'</div>
+          <div>'.$array['CAD_SENHA'].'</div>
+          <div>'.$array['PER_ID'].'</div>
+          </div>
           <img class="imagem" src="midias/icon_edit.png" />
         </button>
-        <button class="btn btn-danger px-0 py-0 col-auto mx-1">
-          <img class="imagem" src="midias/icon_delete.png" />
-        </button>
+        <form class="col-auto" method="POST">
+          <input hidden name="id" value="'.$array['CAD_ID'].'" />
+          <input hidden name="tipo" value="apagar" />
+          <button class="btn btn-danger px-0 py-0 col-auto mx-1">
+            <img class="imagem" src="midias/icon_delete.png" />
+          </button>
+        </form>
       </div>
     </td>
   </tr>';
@@ -138,5 +164,3 @@ function cadastros($dadosModel)
 
   return $linhasTabela;
 }
-
-// array(3) { [0]=> array(6) { ["CAD_ID"]=> int(1) ["USU_ID"]=> int(1) ["PER_ID"]=> int(1) ["CAD_NOME"]=> string(6) "Marcos" ["CAD_EMAIL"]=> string(16) "marcos@gmail.com" ["CAD_SENHA"]=> string(0) "" } [1]=> array(6) { ["CAD_ID"]=> int(2) ["USU_ID"]=> int(1) ["PER_ID"]=> int(2) ["CAD_NOME"]=> string(5) "Fabio" ["CAD_EMAIL"]=> string(13) "fabio@sib.com" ["CAD_SENHA"]=> string(0) "" } [2]=> array(6) { ["CAD_ID"]=> int(3) ["USU_ID"]=> int(1) ["PER_ID"]=> int(3) ["CAD_NOME"]=> string(8) "Vinicius" ["CAD_EMAIL"]=> string(18) "vinicius@gmail.com" ["CAD_SENHA"]=> string(0) "" } }
