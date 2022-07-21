@@ -27,10 +27,10 @@ class CadastroUsuarios
       $this->$atributo = filter_var(trim($value), FILTER_SANITIZE_EMAIL);
     }
     if ($atributo == 'senha') {
-      $this->$atributo = md5(trim($value));
+      $this->$atributo = filter_var(trim($value), FILTER_SANITIZE_SPECIAL_CHARS);
     }
     if ($atributo == 'perfil') {
-      $this->$atributo = new Perfil();
+      $this->$atributo = (int) $value;
     }
   }
 
@@ -41,7 +41,7 @@ class CadastroUsuarios
 
   public static function buscaDoBanco(): array
   {
-    $sql = Conexao::getConexao()->prepare("SELECT `C`.`CAD_ID`, `C`.`USU_ID`, `C`.`PER_ID`, `P`.`PER_NOME`, `C`.`CAD_NOME`, `C`.`CAD_EMAIL`, `CAD_SENHA` FROM `USUARIOS_CADASTRADOS` `C`
+    $sql = Conexao::getConexao()->prepare("SELECT `C`.`CAD_ID`, `C`.`USU_ID`, `C`.`PER_ID`, `P`.`PER_NOME`, `C`.`CAD_NOME`, `C`.`CAD_EMAIL`, `C`.`CAD_SENHA` FROM `USUARIOS_CADASTRADOS` `C`
     JOIN `PERFIL` `P` ON(`C`.`PER_ID` = `P`.`PER_ID`)
     WHERE `C`.`USU_ID` = :id");
     $sql->bindValue(":id", $_SESSION['USU_ID']);
@@ -52,4 +52,16 @@ class CadastroUsuarios
     return array();
   }
 
+  public function inserirNoBanco(): void
+  {
+
+    $sql = Conexao::getConexao()->prepare("INSERT INTO `USUARIOS_CADASTRADOS` VALUES
+      (NULL, :usuario, :perfil, :nome, :email, :senha)");
+    $sql->bindValue(":nome", $this->nome);
+    $sql->bindValue(":email", $this->email);
+    $sql->bindValue(":senha", $this->senha);
+    $sql->bindValue(":perfil", $this->perfil);
+    $sql->bindValue(":usuario", $_SESSION["USU_ID"]);
+    $sql->execute();
+  }
 }

@@ -2,6 +2,7 @@
 
 namespace Core;
 
+use Models\CadastroUsuarios;
 use Models\Usuario;
 
 abstract class Controller
@@ -27,14 +28,14 @@ abstract class Controller
 
     protected function sessaoLigada(): void
     {
-        if( !empty($_SESSION['USU_ID']) ){
+        if (!empty($_SESSION['USU_ID'])) {
             header('Location: ' . $GLOBALS["base"] . 'sistema/index');
             exit;
         }
     }
     protected function sessaoDesligada(): void
     {
-        if( empty($_SESSION['USU_ID']) ){
+        if (empty($_SESSION['USU_ID'])) {
             header('Location: ' . $GLOBALS["base"] . 'home/index');
             exit;
         }
@@ -47,5 +48,22 @@ abstract class Controller
         $usuario->senha = $post['senha'];
         $usuario->logar();
     }
-    
+
+    protected function cadastrar($post)
+    {
+        if(
+            isset($post)
+            & !empty($post['nome'])
+            & !empty($post['email'])
+            & !empty($post['senha'])
+            & !empty($post['perfil'])
+            ){
+            $cadastrar = new CadastroUsuarios();
+            $cadastrar->nome = $post['nome'];
+            $cadastrar->email = $post['email'];
+            $cadastrar->senha = $post['senha'];
+            $cadastrar->perfil = $post['perfil'];
+            $cadastrar->inserirNoBanco();    
+        }
+    }
 }

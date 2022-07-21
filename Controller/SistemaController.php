@@ -18,6 +18,8 @@ class SistemaController extends Controller
     {
         $this->sessaoDesligada();
 
+        $this->cadastrar($_POST);
+
         $this->carregarTemplateDoSistema('sistema/cadastroUsuarios',
             array(
                 'CadastroUsuarios' => CadastroUsuarios::buscaDoBanco(),
