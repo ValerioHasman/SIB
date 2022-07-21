@@ -2,6 +2,8 @@
 
 namespace Models;
 
+use PDO;
+
 class CadastroUsuarios
 {
 
@@ -37,8 +39,17 @@ class CadastroUsuarios
     return $this->$atributo;
   }
 
-  public function CadastraUsuarios() {
-    
+  public static function buscaDoBanco(): array
+  {
+    $sql = Conexao::getConexao()->prepare("SELECT `C`.`CAD_ID`, `C`.`USU_ID`, `C`.`PER_ID`, `P`.`PER_NOME`, `C`.`CAD_NOME`, `C`.`CAD_EMAIL`, `CAD_SENHA` FROM `USUARIOS_CADASTRADOS` `C`
+    JOIN `PERFIL` `P` ON(`C`.`PER_ID` = `P`.`PER_ID`)
+    WHERE `C`.`USU_ID` = :id");
+    $sql->bindValue(":id", $_SESSION['USU_ID']);
+    $sql->execute();
+    if ($sql->rowCount() > 0) {
+      return $sql->fetchAll(PDO::FETCH_ASSOC);
+    }
+    return array();
   }
 
 }

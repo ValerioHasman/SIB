@@ -13,7 +13,7 @@
     <script defer src="roteiro/roteiro.js"></script>
     <link rel="stylesheet" href="formatar/estilosistema.css">
     <link rel="shortcut icon" href="midias/ICONE.ico" type="image/x-icon">
-    <title>Gerenciador</title>
+    <title>SIB</title>
 </head>
 
 <body>

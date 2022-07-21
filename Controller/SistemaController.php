@@ -3,20 +3,27 @@
 namespace Controller;
 
 use Core\Controller;
+use Models\CadastroUsuarios;
+use Models\Perfil;
 
 class SistemaController extends Controller
 {
 
     public function index(): void
     {
-        $this->CadastroUsuarioss();
+        $this->cadastroUsuarios();
     }
     
-    public function CadastroUsuarioss(): void
+    public function cadastroUsuarios(): void
     {
         $this->sessaoDesligada();
 
-        $this->carregarTemplateDoSistema('sistema/CadastroUsuarios', array());
+        $this->carregarTemplateDoSistema('sistema/cadastroUsuarios',
+            array(
+                'CadastroUsuarios' => CadastroUsuarios::buscaDoBanco(),
+                'Perfil' => Perfil::buscaDoBanco()
+            )
+        );
     }
 
     public function sair(): void

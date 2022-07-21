@@ -20,9 +20,7 @@
           <label for="perfil">Perfil</label>
           <select class="form-select" id="perfil" name="perfil">
             <option selected></option>
-            <option value="1">One</option>
-            <option value="2">Two</option>
-            <option value="3">Three</option>
+            <?= listaDePerfil($dadosModel['Perfil']) ?>
           </select>
         </div>
         <div class="col-4">
@@ -61,7 +59,7 @@
 
       <!-- fim da busca -->
 
-      <div>
+      <div class="tamanhoLimeteTabela">
         <table class="table table-bordered">
           <thead class="bg-info text-light">
             <tr>
@@ -73,54 +71,7 @@
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <th hidden scope="row">1</th>
-              <td>Marcos</td>
-              <td>marcos@gmail.com</td>
-              <td>Administrador</td>
-              <td class="py-1">
-                <div class="row justify-content-center">
-                  <button class="btn btn-warning px-0 py-0 col-auto mx-1">
-                    <img class="imagem" src="midias/icon_edit.png" />
-                  </button>
-                  <button class="btn btn-danger px-0 py-0 col-auto mx-1">
-                    <img class="imagem" src="midias/icon_delete.png" />
-                  </button>
-                </div>
-              </td>
-            </tr>
-            <tr>
-              <th hidden scope="row">1</th>
-              <td>Marcos</td>
-              <td>marcos@gmail.com</td>
-              <td>Administrador</td>
-              <td class="py-1">
-                <div class="row justify-content-center">
-                  <button class="btn btn-warning px-0 py-0 col-auto mx-1">
-                    <img class="imagem" src="midias/icon_edit.png" />
-                  </button>
-                  <button class="btn btn-danger px-0 py-0 col-auto mx-1">
-                    <img class="imagem" src="midias/icon_delete.png" />
-                  </button>
-                </div>
-              </td>
-            </tr>
-            <tr>
-              <th hidden scope="row">1</th>
-              <td>Marcos</td>
-              <td>marcos@gmail.com</td>
-              <td>Administrador</td>
-              <td class="py-1">
-                <div class="row justify-content-center">
-                  <button class="btn btn-warning px-0 py-0 col-auto mx-1">
-                    <img class="imagem" src="midias/icon_edit.png" />
-                  </button>
-                  <button class="btn btn-danger px-0 py-0 col-auto mx-1">
-                    <img class="imagem" src="midias/icon_delete.png" />
-                  </button>
-                </div>
-              </td>
-            </tr>
+            <?= cadastros($dadosModel['CadastroUsuarios']) ?>
           </tbody>
         </table>
       </div>
@@ -148,3 +99,43 @@
 </div>
 
 <?php
+
+function listaDePerfil($dadosModel)
+{
+  $listaDePerfil = '';
+
+  foreach ($dadosModel as $array) {
+    $listaDePerfil .= '<option value="'.$array['PER_ID'].'">'.$array['PER_NOME'].'</option>';
+  }
+
+  return $listaDePerfil;
+}
+
+
+function cadastros($dadosModel)
+{
+  $linhasTabela = '';
+
+  foreach ($dadosModel as $array) {
+    $linhasTabela .= '<tr>
+    <th hidden scope="row">' . $array['CAD_ID'] . '</th>
+    <td>' . $array['CAD_NOME'] . '</td>
+    <td>' . $array['CAD_EMAIL'] . '</td>
+    <td>' . $array['PER_NOME'] . '</td>
+    <td class="py-1">
+      <div class="row justify-content-center">
+        <button class="btn btn-warning px-0 py-0 col-auto mx-1">
+          <img class="imagem" src="midias/icon_edit.png" />
+        </button>
+        <button class="btn btn-danger px-0 py-0 col-auto mx-1">
+          <img class="imagem" src="midias/icon_delete.png" />
+        </button>
+      </div>
+    </td>
+  </tr>';
+  }
+
+  return $linhasTabela;
+}
+
+// array(3) { [0]=> array(6) { ["CAD_ID"]=> int(1) ["USU_ID"]=> int(1) ["PER_ID"]=> int(1) ["CAD_NOME"]=> string(6) "Marcos" ["CAD_EMAIL"]=> string(16) "marcos@gmail.com" ["CAD_SENHA"]=> string(0) "" } [1]=> array(6) { ["CAD_ID"]=> int(2) ["USU_ID"]=> int(1) ["PER_ID"]=> int(2) ["CAD_NOME"]=> string(5) "Fabio" ["CAD_EMAIL"]=> string(13) "fabio@sib.com" ["CAD_SENHA"]=> string(0) "" } [2]=> array(6) { ["CAD_ID"]=> int(3) ["USU_ID"]=> int(1) ["PER_ID"]=> int(3) ["CAD_NOME"]=> string(8) "Vinicius" ["CAD_EMAIL"]=> string(18) "vinicius@gmail.com" ["CAD_SENHA"]=> string(0) "" } }
