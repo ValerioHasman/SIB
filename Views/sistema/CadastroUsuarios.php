@@ -114,6 +114,7 @@
   </div>
 </div>
 
+
 <?php
 
 function listaDePerfil($dadosModel)
@@ -164,3 +165,5 @@ function cadastros($dadosModel)
 
   return $linhasTabela;
 }
+
+echo $this->modalOnLoad['deletado'] ?? '';

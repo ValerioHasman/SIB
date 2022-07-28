@@ -8,7 +8,7 @@ use Models\Usuario;
 abstract class Controller
 {
 
-    protected array $dados;
+    protected array $modalOnLoad;
 
     protected function carregarTemplate(string $nomeView, array $dadosModel): void
     {
@@ -86,7 +86,7 @@ abstract class Controller
         }
     }
 
-    protected function apagar($post): void
+    protected function apagar($post): string
     {
         if(
             isset($post)
@@ -95,7 +95,32 @@ abstract class Controller
             $cadastrar = new CadastroUsuarios();
             $cadastrar->id = $post['id'];
             $cadastrar->apagaNoBanco();
+
+            return '
+            <div class="modal fade" id="deletado" tabindex="-1" aria-labelledby="deletadoLabel" aria-hidden="true">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="deletadoLabel">Usuário Removido</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body">
+                    <p>Usuário removido com sucesso!</p>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <script>
+            window.onload = function(){
+                (new bootstrap.Modal($("#deletado"), { keyboard: false })).show();
+            }
+            </script>
+            ';        
         }
+        return '';
     }
 
 }

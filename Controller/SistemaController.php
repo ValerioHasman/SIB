@@ -26,7 +26,7 @@ class SistemaController extends Controller
                 $this->cadastrar($_POST);
                 break;
             case 'apagar':
-                $this->apagar($_POST);
+                $this->modalOnLoad['deletado'] = $this->apagar($_POST);
                 break;
             default:
                 break;
