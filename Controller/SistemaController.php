@@ -20,7 +20,7 @@ class SistemaController extends Controller
 
         switch (isset($_POST['tipo']) ? $_POST['tipo'] : '' ){
             case 'atualizar':
-                $this->atualizar($_POST);
+                $this->modalOnLoad['atualizado'] = $this->atualizar($_POST);
                 break;
             case 'cadastrar':
                 $this->cadastrar($_POST);

@@ -6,7 +6,7 @@
       <form method="POST" class="row cinza py-3 mx-0">
         <input hidden name="id" id="id" />
         <input hidden value="cadastrar" name="tipo" id="atua" />
-        
+
         <div class="col-4">
           <label for="nome">Nome</label>
           <input required type="text" class="form-control" id="nome" name="nome" />
@@ -114,6 +114,30 @@
   </div>
 </div>
 
+<!-- Modal -->
+<div class="modal fade" id="certezaDeletar" tabindex="-1" aria-labelledby="certezaDeletarLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title fw-bolder" id="certezaDeletarLabel">Excluir Usuário</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <form method="post">
+
+        <div class="modal-body">
+          <p>Tem carteza que deseja excluir este usuário? Está ação não poderá ser revertida!</p>
+          <input hidden name="id" value="" />
+          <input hidden name="tipo" value="apagar" />
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+          <button type="submit" class="btn btn-danger">Sim</button>
+        </div>
+
+      </form>
+    </div>
+  </div>
+</div>
 
 <?php
 
@@ -122,7 +146,7 @@ function listaDePerfil($dadosModel)
   $listaDePerfil = '';
 
   foreach ($dadosModel as $array) {
-    $listaDePerfil .= '<option value="'.$array['PER_ID'].'">'.$array['PER_NOME'].'</option>';
+    $listaDePerfil .= '<option value="' . $array['PER_ID'] . '">' . $array['PER_NOME'] . '</option>';
   }
 
   return $listaDePerfil;
@@ -141,23 +165,25 @@ function cadastros($dadosModel)
     <td>' . $array['PER_NOME'] . '</td>
     <td class="py-1">
       <div class="row justify-content-center">
-        <button onClick="editar(\'atualiza'.$array['CAD_ID'].$array['PER_ID'].'\')" id="atualiza'.$array['CAD_ID'].$array['PER_ID'].'" class="btn btn-warning px-0 py-0 col-auto mx-1">
+        <button onClick="editar(\'atualiza' . $array['CAD_ID'] . $array['PER_ID'] . '\')" id="atualiza' . $array['CAD_ID'] . $array['PER_ID'] . '"
+          class="btn btn-warning px-0 py-0 col-auto mx-1">
           <div style="display: none;">
-          <div>'.$array['CAD_ID'].'</div>
-          <div>'.$array['CAD_NOME'].'</div>
-          <div>'.$array['CAD_EMAIL'].'</div>
-          <div>'.$array['CAD_SENHA'].'</div>
-          <div>'.$array['PER_ID'].'</div>
+            <div>' . $array['CAD_ID'] . '</div>
+            <div>' . $array['CAD_NOME'] . '</div>
+            <div>' . $array['CAD_EMAIL'] . '</div>
+            <div>' . $array['CAD_SENHA'] . '</div>
+            <div>' . $array['PER_ID'] . '</div>
           </div>
           <img class="imagem" src="midias/icon_edit.png" />
         </button>
-        <form class="col-auto" method="POST">
-          <input hidden name="id" value="'.$array['CAD_ID'].'" />
-          <input hidden name="tipo" value="apagar" />
-          <button class="btn btn-danger px-0 py-0 col-auto mx-1">
-            <img class="imagem" src="midias/icon_delete.png" />
-          </button>
-        </form>
+        <button
+          type="button"
+          class="btn btn-danger px-0 py-0 col-auto mx-1"
+          data-bs-toggle="modal"
+          data-bs-target="#certezaDeletar"
+          data-bs-whatever="' . $array['CAD_ID'] . '">
+          <img class="imagem" src="midias/icon_delete.png" />
+        </button>
       </div>
     </td>
   </tr>';
@@ -167,3 +193,4 @@ function cadastros($dadosModel)
 }
 
 echo $this->modalOnLoad['deletado'] ?? '';
+echo $this->modalOnLoad['atualizado'] ?? '';

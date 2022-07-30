@@ -66,7 +66,7 @@ abstract class Controller
             $cadastrar->inserirNoBanco();    
         }
     }
-    protected function atualizar($post): void
+    protected function atualizar($post): string
     {
         if(
             isset($post)
@@ -83,7 +83,30 @@ abstract class Controller
             $cadastrar->senha = $post['senha'];
             $cadastrar->perfil = $post['perfil'];
             $cadastrar->atualizaNoBanco();
+
+            return '<div class="modal fade" id="atualizado" tabindex="-1" aria-labelledby="atualizadoLabel" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title fw-bolder" id="atualizadoLabel">Usuário Atualizado</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                  <p>Usuário atualizado com sucesso!</p>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <script>
+          window.onload = function(){
+              (new bootstrap.Modal($("#atualizado"), { keyboard: false })).show();
+          }
+          </script>';
         }
+        return '';
     }
 
     protected function apagar($post): string
@@ -96,12 +119,11 @@ abstract class Controller
             $cadastrar->id = $post['id'];
             $cadastrar->apagaNoBanco();
 
-            return '
-            <div class="modal fade" id="deletado" tabindex="-1" aria-labelledby="deletadoLabel" aria-hidden="true">
+            return '<div class="modal fade" id="deletado" tabindex="-1" aria-labelledby="deletadoLabel" aria-hidden="true">
               <div class="modal-dialog">
                 <div class="modal-content">
                   <div class="modal-header">
-                    <h5 class="modal-title" id="deletadoLabel">Usuário Removido</h5>
+                    <h5 class="modal-title fw-bolder" id="deletadoLabel">Usuário Removido</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                   </div>
                   <div class="modal-body">
@@ -117,8 +139,7 @@ abstract class Controller
             window.onload = function(){
                 (new bootstrap.Modal($("#deletado"), { keyboard: false })).show();
             }
-            </script>
-            ';        
+            </script>';        
         }
         return '';
     }

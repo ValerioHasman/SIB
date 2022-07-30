@@ -19,7 +19,7 @@ function editar(id) {
       $("#perfil").val(element.innerHTML);
     }
   });
-  
+
   $("#atua").val('atualizar');
 
   $("#grupo1").addClass('d-none');
@@ -27,7 +27,7 @@ function editar(id) {
 
 }
 
-$("#cancelar").click(function(){
+$("#cancelar").click(function () {
   $("#atua").val('cadastrar');
   $("#grupo1").removeClass('d-none');
   $("#grupo2").addClass('d-none');
@@ -38,3 +38,10 @@ $("#cancelar").click(function(){
   $("#perfil").val('');
 });
 
+var exampleModal = document.getElementById('certezaDeletar');
+exampleModal.addEventListener('show.bs.modal', function (event) {
+  var button = event.relatedTarget;
+  var recipient = button.getAttribute('data-bs-whatever');
+  var modalBodyInput = exampleModal.querySelector('.modal-body input');
+  modalBodyInput.value = recipient;
+})
