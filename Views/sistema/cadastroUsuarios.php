@@ -6,27 +6,26 @@
       <form method="POST" class="row cinza py-3 mx-0">
         <input hidden name="id" id="id" />
         <input hidden value="cadastrar" name="tipo" id="atua" />
-
-        <div class="col-4">
+        <div class="col-sm-6 col-12 col-md-4">
           <label for="nome">Nome</label>
           <input required type="text" class="form-control" id="nome" name="nome" />
         </div>
-        <div class="col-4">
+        <div class="col-sm-6 col-12 col-md-4">
           <label for="email">E-mail</label>
           <input required type="email" class="form-control" id="email" name="email" />
         </div>
-        <div class="col-4">
+        <div class="col-sm-6 col-12 col-md-4">
           <label for="senha">Senha</label>
           <input required type="password" class="form-control" id="senha" name="senha" />
         </div>
-        <div class="col-4">
+        <div class="col-sm-6 col-12 col-md-4">
           <label for="perfil">Perfil</label>
           <select required class="form-select" id="perfil" name="perfil">
             <option selected></option>
             <?= listaDePerfil($dadosModel['Perfil']) ?>
           </select>
         </div>
-        <div class="col-4">
+        <div class="col-sm-6 col-12 col-md-4">
           <div id="grupo1" class="mt-4 d-grid gap-2">
             <button type="submit" class="btn btn-primary">Cadastrar</button>
           </div>
@@ -45,32 +44,6 @@
 
         </div>
       </form>
-
-      <!--<div class="row justify-content-between mt-3">
-        <div class="col-auto">
-          <label for="registros">Mostrar</label>
-          <div class="registros">
-            <div class="input-group input-group-sm mb-3 col-12">
-              <select class="form-select" id="registros" name="registros">
-                <option selected></option>
-                <option value="8">8</option>
-                <option value="25">25</option>
-                <option value="50">50</option>
-              </select>
-            </div>
-          </div>
-          <label for="registros">registros</label>
-        </div>
-        <div class="col-auto">
-          <label>Buscar:</label>
-          <div class="buscar">
-            <div class="input-group input-group-sm mb-3 col-12">
-              <input type="text" class="form-control" name="buscar" id="buscar">
-            </div>
-          </div>
-        </div>
-      </div> fim da busca -->
-
       <div class="tamanhoLimeteTabela mt-2">
         <table id="tabelaDeDados" class="table table-bordered">
           <thead class="bg-info text-light">
@@ -87,25 +60,6 @@
           </tbody>
         </table>
       </div>
-
-      <!-- fim da tabela -->
-<!-- 
-      <div class="row justify-content-between">
-        <div class="col-auto">
-          Mostrando de 1 até 8 de 8 registros
-        </div>
-        <nav class="col-auto">
-          <ul class="pagination pagination-sm">
-            <li class="page-item disabled">
-              <a class="page-link">Anterior</a>
-            </li>
-            <li class="page-item active"><a class="page-link" href="#">1</a></li>
-            <li class="page-item disabled">
-              <a class="page-link" href="#">Seguinte</a>
-            </li>
-          </ul>
-        </nav>
-      </div> -->
     </div>
   </div>
 </div>
