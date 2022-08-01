@@ -38,6 +38,8 @@ $("#cancelar").click(function () {
   $("#perfil").val('');
 });
 
+
+// Modal de certeza de exclusão
 var exampleModal = document.getElementById('certezaDeletar');
 exampleModal.addEventListener('show.bs.modal', function (event) {
   var button = event.relatedTarget;
@@ -45,3 +47,9 @@ exampleModal.addEventListener('show.bs.modal', function (event) {
   var modalBodyInput = exampleModal.querySelector('.modal-body input');
   modalBodyInput.value = recipient;
 })
+
+
+// Tabela de dados
+$(document).ready(function () {
+  $('#tabelaDeDados').DataTable();
+});

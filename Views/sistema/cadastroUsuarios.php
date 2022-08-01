@@ -46,9 +46,7 @@
         </div>
       </form>
 
-      <!-- fim do form -->
-
-      <div class="row justify-content-between mt-3">
+      <!--<div class="row justify-content-between mt-3">
         <div class="col-auto">
           <label for="registros">Mostrar</label>
           <div class="registros">
@@ -71,12 +69,10 @@
             </div>
           </div>
         </div>
-      </div>
+      </div> fim da busca -->
 
-      <!-- fim da busca -->
-
-      <div class="tamanhoLimeteTabela">
-        <table class="table table-bordered">
+      <div class="tamanhoLimeteTabela mt-2">
+        <table id="tabelaDeDados" class="table table-bordered">
           <thead class="bg-info text-light">
             <tr>
               <th hidden scope="col">#</th>
@@ -93,7 +89,7 @@
       </div>
 
       <!-- fim da tabela -->
-
+<!-- 
       <div class="row justify-content-between">
         <div class="col-auto">
           Mostrando de 1 até 8 de 8 registros
@@ -109,12 +105,12 @@
             </li>
           </ul>
         </nav>
-      </div>
+      </div> -->
     </div>
   </div>
 </div>
 
-<!-- Modal -->
+<!-- Modal de deletar -->
 <div class="modal fade" id="certezaDeletar" tabindex="-1" aria-labelledby="certezaDeletarLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">

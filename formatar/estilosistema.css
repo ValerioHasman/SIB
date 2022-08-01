@@ -58,8 +58,8 @@ body{
 
 .tamanhoLimeteTabela {
     height: auto;
+    width: auto;
     overflow: hidden;
     overflow-y: auto;
     overflow-x: auto;
-    border: 1px solid var(--bs-gray-300);
 }
